@@ -2,10 +2,11 @@
 
 ## [Goal] We can generate 2D Delaunary Triangulation method from the FLaME code and J. R. Shewchuk Paper !
 
----
 Generate 2D Delaunay Triangulation and Visualization
 
-
+- EuRoC Dataset Example
+  
+  <img src="./Example.png"/>
 
 ---
 Reference Paper
