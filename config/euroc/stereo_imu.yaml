@@ -1,0 +1,71 @@
+%YAML:1.0
+
+# 0: Mono / 1: Stereo
+stereo: 0
+
+# 0: Not apply preprocess / 1: histogram equalization / 2: CLAHE equalization
+preprocessing: 2
+
+# Show images for visualization
+show_depth_img: 1
+
+# Image Topic
+left_img_topic: "/cam0/image_raw"
+right_img_topic: "/cam1/image_raw"
+
+# Image Size
+image_width: 752
+image_height: 480 
+
+# Camera Model
+camera_name: pinhole
+
+#--------------------------------------------------------------------------------------------
+# Left Camera Configuration
+#--------------------------------------------------------------------------------------------
+# projection_parameters
+left_fx: 4.6115862106007575e+02
+left_fy: 4.5975286598073296e+02
+left_cx: 3.6265929181685937e+02
+left_cy: 2.4852105668448124e+02
+
+# distortion_parameters
+left_k1: -2.9545645106987750e-01
+left_k2: 8.6623215640186171e-02
+left_p1: 2.0132892276082517e-06
+left_p2: 1.3924531371276508e-05
+
+# extrinsic_parameters
+imu_T_left: !!opencv-matrix
+   rows: 4
+   cols: 4
+   dt: d
+   data: [ 0.0148655429818, -0.999880929698,   0.00414029679422, -0.0216401454975,
+           0.999557249008,   0.0149672133247,  0.025715529948,   -0.064676986768,
+          -0.0257744366974,  0.00375618835797, 0.999660727178,    0.00981073058949,
+           0.0,              0.0,              0.0,               1.0]
+
+#--------------------------------------------------------------------------------------------
+# Right Camera Configuration
+#--------------------------------------------------------------------------------------------
+# projection_parameters
+right_fx: 4.6009781682258682e+02
+right_fy: 4.5890983492218902e+02
+right_cx: 3.7314916359808268e+02
+right_cy: 2.5440734973672119e+02
+
+# distortion_parameters
+right_k1: -2.9294124381930947e-01
+right_k2: 8.4798002331543665e-02
+right_p1: -2.9984646536002372e-04
+right_p2: 3.0028216325237329e-04
+
+# extrinsic_parameters
+imu_T_right: !!opencv-matrix
+   rows: 4
+   cols: 4
+   dt: d
+   data: [ 0.0125552670891, -0.999755099723,  0.0182237714554, -0.0198435579556,
+           0.999598781151,   0.0130119051815, 0.0251588363115,  0.0453689425024,
+          -0.0253898008918,  0.0179005838253, 0.999517347078,   0.00786212447038,
+           0.0,              0.0,             0.0,              1.0]
