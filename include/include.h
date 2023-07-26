@@ -21,6 +21,6 @@
 #include "opencv2/xfeatures2d/nonfree.hpp"
 #include "opencv2/calib3d/calib3d.hpp"
 
-using Vertex = cv::Point2f;
-using Triangle = cv::Vec3i;
-using Edge = cv::Vec2i;
+// using Vertex = cv::Point2f;
+// using Triangle = cv::Vec3i;
+// using Edge = cv::Vec2i;

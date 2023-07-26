@@ -46,12 +46,18 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
-add_library(external_dt
-  src/external/triangle.cpp
-  src/external/triangle.h)
+## Select Triangulation Method !!!!
+# Then add target_link_libraries !!!!
+add_library(richard
+  src/richard/triangle.cpp
+  src/richard/triangle.h)
+
+add_library(dowyer_watson
+  src/dowyer_watson/triangle.cpp
+  src/dowyer_watson/triangle.h)
 
 ## Declare a C++ executable
 add_executable(delaunary_triangulation_node src/delaunary.cpp)
 #target_link_libraries(robust_stitching_node custom_lib ${catkin_LIBRARIES} ${OpenCV_LIBS})
-target_link_libraries(delaunary_triangulation_node ${catkin_LIBRARIES} ${OpenCV_LIBS} external_dt)
+target_link_libraries(delaunary_triangulation_node ${catkin_LIBRARIES} ${OpenCV_LIBS} dowyer_watson)
 

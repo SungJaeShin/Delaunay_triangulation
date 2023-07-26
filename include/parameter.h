@@ -18,22 +18,13 @@ void parameterSetting(std::string config)
         std::cerr << "ERROR: Wrong path to settings" << std::endl;
 
     STEREO = configSettings["stereo"];
-
-    std::cout << "here" << std::endl;
-
     Preprocessing = configSettings["preprocessing"];
-
-
 
     configSettings["left_img_topic"] >> LeftImgTopic;
     configSettings["right_img_topic"] >> RightImgTopic;
 
-
-
     configSettings["imu_T_left"] >>  LeftCAM;
     configSettings["imu_T_right"] >> RightCAM;
-
-
 
     // Visualization
     Show_Depth = configSettings["show_depth_img"];
