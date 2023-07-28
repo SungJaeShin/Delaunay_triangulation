@@ -29,9 +29,9 @@ std::vector<Triangle> triangulate(std::vector<cv::Point2f> vertices)
 	const float midx = (minX + maxX) / 2;
 	const float midy = (minY + maxY) / 2;
 
-	const cv::Point2f p1(midx - 20 * deltaMax, midy - deltaMax);
-	const cv::Point2f p2(midx, midy + 20 * deltaMax);
-	const cv::Point2f p3(midx + 20 * deltaMax, midy - deltaMax);
+	const cv::Point2i p1(midx - 20 * deltaMax, midy - deltaMax);
+	const cv::Point2i p2(midx, midy + 20 * deltaMax);
+	const cv::Point2i p3(midx + 20 * deltaMax, midy - deltaMax);
 
 	std::cout << "2d point size: " << vertices.size() << std::endl;
 	std::cout << "maxX: " << maxX << ", minX: " << minX << std::endl;
@@ -66,6 +66,7 @@ std::vector<Triangle> triangulate(std::vector<cv::Point2f> vertices)
 		}), end(_triangles));
 
 		std::cout << "triangle size 2: " << _triangles.size() << std::endl;
+		std::cout << "edge size 1: " << polygon.size() << std::endl;
 
 
 		for(auto e1 = begin(polygon); e1 != end(polygon); ++e1)
@@ -88,7 +89,7 @@ std::vector<Triangle> triangulate(std::vector<cv::Point2f> vertices)
 			_triangles.push_back(Triangle(*e.a, *e.b, *p));
 
 		std::cout << "triangle size 3: " << _triangles.size() << std::endl;
-		std::cout << "edge size: " << polygon.size() << std::endl;
+		std::cout << "edge size 2: " << polygon.size() << std::endl;
 
 	}
 

@@ -7,16 +7,19 @@
 
 bool almost_equal(cv::Point2f x, cv::Point2f y, int ulp=2)
 {
-    if(fabsf(x.x-y.x) <= std::numeric_limits<float>::epsilon() * fabsf(x.x+y.x) * static_cast<float>(ulp))
-        return true;
-    if(fabsf(x.x-y.x) < std::numeric_limits<float>::min())
-        return true;
-    if(fabsf(x.y-y.y) <= std::numeric_limits<float>::epsilon() * fabsf(x.y+y.y) * static_cast<float>(ulp))
-        return true;
-    if(fabsf(x.y-y.y) < std::numeric_limits<float>::min())
-        return true;       
+    // if(fabsf(x.x - y.x) <= std::numeric_limits<float>::epsilon() * fabsf(x.x + y.x) * static_cast<float>(ulp))
+    //     return true;
+    // if(fabsf(x.x - y.x) < std::numeric_limits<float>::min())
+    //     return true;
+    // if(fabsf(x.y - y.y) <= std::numeric_limits<float>::epsilon() * fabsf(x.y + y.y) * static_cast<float>(ulp))
+    //     return true;
+    // if(fabsf(x.y - y.y) < std::numeric_limits<float>::min())
+    //     return true;       
 
-    return false;
+    return fabsf(x.x - y.x) <= std::numeric_limits<float>::epsilon() * fabsf(x.x + y.x) * static_cast<float>(ulp) 
+        || fabsf(x.x - y.x) < std::numeric_limits<float>::min()
+        || fabsf(x.y - y.y) <= std::numeric_limits<float>::epsilon() * fabsf(x.y + y.y) * static_cast<float>(ulp)
+        || fabsf(x.y - y.y) < std::numeric_limits<float>::min();
 }
 
 struct Triangle
