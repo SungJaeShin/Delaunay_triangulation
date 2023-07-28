@@ -50,8 +50,47 @@ void delaunary(double time, int index, cv::Mat img, cv::Mat img2 = cv::Mat())
     // cv::waitKey(10);
 
     // /* ---------------------------------------------------------------------------------------- */
+    std::vector<dt::Vector2<double>> points;
+	for(int i = 0; i < left_img_2d_point.size(); ++i) {
+		points.push_back(dt::Vector2<double>{left_img_2d_point[i].x, left_img_2d_point[i].y});
+	}
+
+    dt::Delaunay<double> triangulation;
+	const auto start = std::chrono::high_resolution_clock::now();
+	const std::vector<dt::Triangle<double>> triangles = triangulation.triangulate(points);
+	const auto end = std::chrono::high_resolution_clock::now();
+	const std::chrono::duration<double> diff = end - start;
+
+    if(triangles.size() == 0)
+        return;    
+    cv::Mat drawDTimg = img.clone();
+
+    for(int i = 0; i < triangles.size(); i++)
+    {
+        dt::Vector2<float> point1(triangles[i].a->x, triangles[i].a->y);
+        dt::Vector2<float> point2(triangles[i].b->x, triangles[i].b->y);
+        dt::Vector2<float> point3(triangles[i].c->x, triangles[i].c->y);
+        
+        cv::Point2f cvPoint1(point1.x, point1.y);
+        cv::Point2f cvPoint2(point2.x, point2.y);
+        cv::Point2f cvPoint3(point3.x, point3.y);
+
+        // std::cout << "point 1: " << cvPoint1 << std::endl;
+        // std::cout << "point 2: " << cvPoint2 << std::endl;
+        // std::cout << "point 3: " << cvPoint3 << std::endl;
+
+        cv::line(drawDTimg, cvPoint1, cvPoint2, cv::Scalar(255, 255, 0), 2);
+        cv::line(drawDTimg, cvPoint2, cvPoint3, cv::Scalar(255, 255, 0), 2);
+        cv::line(drawDTimg, cvPoint3, cvPoint1, cv::Scalar(255, 255, 0), 2);
+    }
+
+    cv::imshow("Delaunay Triangulation", drawDTimg);
+    cv::waitKey(10);        
+
+    // /* ---------------------------------------------------------------------------------------- */
     // std::cout << "size of img 2d point: " << left_img_2d_point.size() << std::endl;
-    std::vector<Triangle> triangle_ = triangulate(left_img_2d_point);
+
+    // std::vector<Triangle> triangle_ = triangulate(left_img_2d_point);
     // std::cout << "size of triangle: " << triangle_.size() << std::endl;
 
     // /* ---------------------------------------------------------------------------------------- */
@@ -130,7 +169,7 @@ void delaunary(double time, int index, cv::Mat img, cv::Mat img2 = cv::Mat())
 
     // Visualization Delaunay Triangulation 
     // drawDelaunaryTriangle(img, triangles_, neighbors_, edges_, output_dt);
-    drawDelaunaryTriangle(img, triangle_);
+    // drawDelaunaryTriangle(img, triangle_);
 
     // // free memory used for triangulation
     // free(output_dt.pointlist);

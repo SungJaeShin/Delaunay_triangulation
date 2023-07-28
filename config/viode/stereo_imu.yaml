@@ -1,0 +1,72 @@
+%YAML:1.0
+
+# 0: Mono / 1: Stereo
+stereo: 0
+
+# 0: Not apply preprocess / 1: histogram equalization / 2: CLAHE equalization
+preprocessing: 2
+
+# Show images for visualization
+show_depth_img: 1
+
+# Image Topic
+left_img_topic: "/cam0/image_raw"
+right_img_topic: "/cam1/image_raw"
+
+# Image Size
+image_width: 752
+image_height: 480 
+
+# Camera Model
+camera_name: pinhole
+
+#--------------------------------------------------------------------------------------------
+# Left Camera Configuration
+#--------------------------------------------------------------------------------------------
+# projection_parameters
+left_fx: 376.0
+left_fy: 376.0
+left_cx: 376.0
+left_cy: 240.0
+
+# distortion_parameters
+left_k1: 0.0
+left_k2: 0.0
+left_p1: 0.0
+left_p2: 0.0
+
+# extrinsic_parameters
+imu_T_left: !!opencv-matrix
+   rows: 4
+   cols: 4
+   dt: d
+   data: [0.0, 0.0, 1.0, 0.0,
+          1.0, 0.0, 0.0, 0.0,
+          0.0, 1.0, 0.0, 0.0,
+          0.0, 0.0, 0.0, 1.0]
+
+#--------------------------------------------------------------------------------------------
+# Right Camera Configuration
+#--------------------------------------------------------------------------------------------
+# projection_parameters
+right_fx: 376.0
+right_fy: 376.0
+right_cx: 376.0
+right_cy: 240.0
+
+# distortion_parameters
+right_k1: 0.0
+right_k2: 0.0
+right_p1: 0.0
+right_p2: 0.0
+
+
+# extrinsic_parameters
+imu_T_right: !!opencv-matrix
+   rows: 4
+   cols: 4
+   dt: d
+   data: [0.0, 0.0, 1.0, 0.0,
+          1.0, 0.0, 0.0, 0.05,
+          0.0, 1.0, 0.0, 0.0,
+          0.0, 0.0, 0.0, 1.0]
