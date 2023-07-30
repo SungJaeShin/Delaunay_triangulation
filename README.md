@@ -4,7 +4,7 @@
 
 Generate 2D Delaunay Triangulation and Visualization
 
-- EuRoC Dataset Example (Vecon Room)
+- EuRoC Dataset Example (Vicon Room)
   
   <img src="./euroc_vr.png"/>
 
